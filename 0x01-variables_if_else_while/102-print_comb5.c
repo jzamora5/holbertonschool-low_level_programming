@@ -34,7 +34,7 @@ int main(void)
 					putchar(32);
 					putchar(array[2] + '0');
 					putchar(array[3] + '0');
-					if ((i != 98) && (j != 99)
+					if ((i != 98) || (j != 99))
 					{
 						putchar(44);
 						putchar(32);
@@ -44,5 +44,6 @@ int main(void)
 
 		}
 	}
+	putchar('\n');
 	return (0);
 }
