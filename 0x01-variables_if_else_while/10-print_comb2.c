@@ -14,10 +14,12 @@ int main(void)
 
 	while (n < 58)
 	{
-		while (m < 58){
+		while (m < 58)
+		{
 			putchar(n);
 			putchar(m);
-			if((n != 57) || (m != 57)){
+			if ((n != 57) || (m != 57))
+			{
 				putchar(44);
 				putchar(32);
 			}
@@ -27,5 +29,5 @@ int main(void)
 		n++;
 	}
 	putchar('\n');
-	return(0);
+	return (0);
 }
