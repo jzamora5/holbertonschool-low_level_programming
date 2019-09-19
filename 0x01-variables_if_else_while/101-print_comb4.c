@@ -25,7 +25,7 @@ int main(void)
 				putchar(n);
 				putchar(m);
 				putchar(w);
-				if ((n != 56) || (m != 57) || (w != 58))
+				if ((n != 55))
 				{
 					putchar(44);
 					putchar(32);
