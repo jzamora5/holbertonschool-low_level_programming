@@ -8,13 +8,13 @@
  */
 int main(void)
 {
-	int i, n, m, c, u;
+	long int i, n, m, c, u;
 
 	n = 1;
 	m = 2;
 	u= 48;
-	printf("%i, ", n);
-	printf("%i, ", m);
+	printf("%li, ", n);
+	printf("%li, ", m);
 	for (i = 1; i <= u; i++)
 	{
 		c = m + n;
@@ -22,11 +22,11 @@ int main(void)
 		m = c;
 		if (i != u)
 		{
-			printf("%i, ", c);
+			printf("%li, ", c);
 		}
 		else
 		{
-			printf("%i\n", c);
+			printf("%li\n", c);
 		}
 	}
 	return (0);
