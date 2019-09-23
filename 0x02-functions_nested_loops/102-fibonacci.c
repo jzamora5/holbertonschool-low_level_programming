@@ -12,7 +12,7 @@ int main(void)
 
 	n = 1;
 	m = 2;
-	u= 48;
+	u = 48;
 	printf("%li, ", n);
 	printf("%li, ", m);
 	for (i = 1; i <= u; i++)
