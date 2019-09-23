@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <unistd.h>
 
 /**
  * _islower - returns 1 is lowercase, 0 otherwise
