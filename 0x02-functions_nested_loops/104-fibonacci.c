@@ -33,7 +33,7 @@ int main(void)
 		split2 = (b + d) - thousand * digit;
 		a = c, b = d;
 		c = split1, d = split2;
-		if (split2 >= limit)
+		if (split2 >= 100)
 			printf("%lu%lu", split1, split2);
 		else
 			printf("%lu0%lu", split1, split2);
