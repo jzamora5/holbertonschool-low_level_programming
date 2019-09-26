@@ -10,7 +10,7 @@
 void print_number(int n)
 {
 	int ten, i, neg;
-	int digit, digit2;
+	unsigned int digit, digit2;
 
 	ten = 1;
 	if (n < 0)
