@@ -9,25 +9,25 @@
  */
 void print_number(int n)
 {
-	int digit, ten, i, negative;
+	int digit, ten, i, neg;
 
+	ten = 1;
 	if (n < 0)
 	{
 		n = n * -1;
-		negative = 1;
+		neg = 1;
 	}
 	digit = n;
-	ten = 1;
 	while (digit >= 10)
 	{
 		digit = digit / 10;
 		ten = ten * 10;
 	}
-	if (negative == 1)
+	if (neg == 1)
 	{
 		_putchar('-');
 	}
-	_putchar('0' + digit);
+	_putchar('0' + (n / ten));
 	i = ten / 10;
 	while (i >= 1)
 	{
