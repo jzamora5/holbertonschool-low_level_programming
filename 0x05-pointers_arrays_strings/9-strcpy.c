@@ -1,0 +1,21 @@
+#include "holberton.h"
+#include <stdio.h>
+
+/**
+ * _strcpy - copies one string to another
+ * @dest: Array
+ * @src: Size of Array
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+
+	for (i = 0; i < 98; i++)
+	{
+		dest[i] = *(src + i);
+	}
+	return (dest);
+}
