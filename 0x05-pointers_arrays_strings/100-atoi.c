@@ -10,7 +10,8 @@
  */
 int _atoi(char *s)
 {
-	int i, j, ten, neg, found;
+	int i, j, ten2, neg, found;
+	unsigned int ten;
 
 	ten = 0;
 	i = 1;
@@ -36,6 +37,6 @@ int _atoi(char *s)
 			break;
 		}
 	}
-	ten = ten * neg;
-	return (ten);
+	ten2 = ten * neg;
+	return (ten2);
 }
