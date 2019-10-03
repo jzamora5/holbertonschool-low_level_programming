@@ -52,3 +52,8 @@ char *cap_string(char *);
 #define LEET_H
 char *leet(char *);
 #endif
+
+#ifndef ROT13_H
+#define ROT13_H
+char *rot13(char *);
+#endif
