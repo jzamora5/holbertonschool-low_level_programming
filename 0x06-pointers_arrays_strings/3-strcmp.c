@@ -10,34 +10,19 @@
  */
 int _strcmp(char *s1, char *s2)
 {
-	int i, j, k, l, v;
 
-	i = 0, j = 0;
-	while (s1[i] != '\0')
-		i++;
-	while (s2[j] != '\0')
-		j++;
-	if (i >= j)
-		k = i;
-	else
-		k = j;
-	for (l = 0; l <= k; l++)
+	while (*s1 != '\0')
 	{
-		if ((s1[l] == 0) && (s2[l] != 0))
-		{
-			v = -15;
-			break;
-		}
-		else if ((s2[l] == 0) && (s1[l] != 0))
-		{
-			v = 15;
-			break;
-		}
-		else if ((s1[l] == 0) && (s2[l] == 0))
-		{
-			v = 0;
-			break;
-		}
+		if (*s2 == '\0')
+			return (1);
+		if (*s2 > *s1)
+			return (-1);
+		if (*s1 > *s2)
+			return (1);
+		s1++;
+		s2++;
 	}
-	return (v);
+	if (*s2 != '\0')
+		return (-1);
+	return (0);
 }
