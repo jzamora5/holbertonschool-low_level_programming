@@ -10,12 +10,12 @@
 char *leet(char *s)
 {
 	int i, j;
+	char leet[] = "aeotl";
+	char leet2[] = "AEOTL";
+	char leet3[] = "43071";
 
-	char leet[]="aeotl";
-	char leet2[]="AEOTL";
-	char leet3[]="43071";
 	j = 0;
-	while(*s != 0)
+	while (*s != 0)
 	{
 		for (i = 0; i <= 4; i++)
 		{
