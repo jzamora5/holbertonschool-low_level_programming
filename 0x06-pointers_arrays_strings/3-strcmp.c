@@ -14,15 +14,15 @@ int _strcmp(char *s1, char *s2)
 	while (*s1 != '\0')
 	{
 		if (*s2 == '\0')
-			return (15);
+			return (*s1);
 		if (*s2 > *s1)
-			return (-15);
+			return (*s1 - *s2);
 		if (*s1 > *s2)
-			return (15);
+			return (*s1 - *s2);
 		s1++;
 		s2++;
 	}
 	if (*s2 != '\0')
-		return (-15);
+		return (*s2);
 	return (0);
 }
