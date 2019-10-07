@@ -37,3 +37,8 @@ char *_strstr(char *haystack, char *needle);
 #define _PRINT_CHESSBOARD_H
 void print_chessboard(char (*a)[8]);
 #endif
+
+#ifndef _PRINT_DIAGSUMS_H
+#define _PRINT_DIAGSUMS_H
+void print_diagsums(int *a, int size);
+#endif
