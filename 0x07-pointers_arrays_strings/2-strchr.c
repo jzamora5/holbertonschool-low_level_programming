@@ -19,7 +19,7 @@ char *_strchr(char *s, char c)
 	for (i = 0; i < l; i++, s++)
 	{
 		if (*s == c)
-			break;
+			return (s);
 	}
-	return (s);
+	return (0);
 }
