@@ -32,3 +32,8 @@ char *_strpbrk(char *s, char *accept);
 #define _STRSTR_H
 char *_strstr(char *haystack, char *needle);
 #endif
+
+#ifndef _PRINT_CHESSBOARD_H
+#define _PRINT_CHESSBOARD_H
+void print_chessboard(char (*a)[8]);
+#endif
