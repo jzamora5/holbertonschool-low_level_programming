@@ -16,7 +16,7 @@ char *_strchr(char *s, char c)
 	l = 0;
 	while (s[l] != '\0')
 		l++;
-	for (i = 0; i < l; i++, s++)
+	for (i = 0; i <= l; i++, s++)
 	{
 		if (*s == c)
 			return (s);
