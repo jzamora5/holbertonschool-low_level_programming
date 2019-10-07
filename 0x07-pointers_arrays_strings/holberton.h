@@ -42,3 +42,8 @@ void print_chessboard(char (*a)[8]);
 #define _PRINT_DIAGSUMS_H
 void print_diagsums(int *a, int size);
 #endif
+
+#ifndef _SET_STRING_H
+#define _SET_STRING_H
+void set_string(char **s, char *to);
+#endif
