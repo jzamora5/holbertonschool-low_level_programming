@@ -1,7 +1,29 @@
 #include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
+/**
+ * _wcount - counts number of words
+ * @sw: string
+ *
+ * Return: int
+ */
+int _wcount(char *sw)
+{
+	int l, wc;
 
+	l = 0, wc = 0;
+	if (*(sw + l) == ' ')
+		l++;
+	while (*(sw + l))
+	{
+		if (*(sw + l) == ' ' && *(sw + l - 1) != ' ')
+			wc++;
+		if (*(sw + l) != ' '  && *(sw + l + 1) == 0)
+			wc++;
+		l++;
+	}
+	return (wc);
+}
 /**
  * _trspace - Moves adress to remove trailig whitespaces
  * @st: string
@@ -27,14 +49,10 @@ char **strtow(char *str)
 
 	if (str == NULL || *str == 0)
 		return (0);
-	l = 0, wc = 0, fr = 0;
-	while (*(str + l))
-	{
-		l++;
-		if ((*(str + l) == ' ' && *(str + l - 1) != ' ')
-		    || (*(str + l + 1) == 0 && *(str + l) != ' '))
-			wc++;
-	}
+	fr = 0;
+	wc = _wcount(str);
+	if (wc == 0)
+		return (0);
 	s = malloc((wc + 1) * sizeof(char *));
 	if (s == 0)
 		return (0);
@@ -52,7 +70,8 @@ char **strtow(char *str)
 		}
 		for (j = 0, l2 = 0; l2 < l; l2++, j++)
 			s[i][j] = *(ts + l2);
-		s[i][j] = '\0', ts = _trspace(ts + l);
+		s[i][j] = '\0';
+		ts = _trspace(ts + l);
 	}
 	s[i] = NULL;
 	if (fr == 1)
@@ -60,7 +79,6 @@ char **strtow(char *str)
 		for (k = 0; k <= i; k++)
 			free(s[k]);
 		free(s);
-		return (0);
 	}
 	return (s);
 }
