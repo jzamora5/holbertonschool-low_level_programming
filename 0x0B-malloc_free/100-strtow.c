@@ -37,7 +37,10 @@ char **strtow(char *str)
 	}
 	s = malloc((wc + 1) * sizeof(char *));
 	if (s == 0)
+	{
+		free(s);
 		return (0);
+	}
 	ts = _trspace(str);
 	for (i = 0; i < wc; i++)
 	{
