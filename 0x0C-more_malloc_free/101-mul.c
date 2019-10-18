@@ -161,24 +161,17 @@ int main(int argc, char **argv)
 	int i, j, k, l1 = 0, l2 = 0, small, big, tmp, ten, zeros = 0, sizemall;
 	char *less, *more, *mless, *adds1, *addsall, *r;
 
-	if (argc != 3)
+	if (argc != 3 || _isnumber(argv[1]) == 0 || _isnumber(argv[2]) == 0)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	if (_isnumber(argv[1]) == 0 || _isnumber(argv[2]) == 0)
-	{
-		printf("Error\n");
-		exit(98);
-	}
-	l1 = _strlen(argv[1]);
-	l2 = _strlen(argv[2]);
+	l1 = _strlen(argv[1]), l2 = _strlen(argv[2]);
 	if (l1 >= l2)
 		big = l1, small = l2, more = argv[1], less = argv[2];
 	else
 		big = l2, small = l1, more = argv[2], less = argv[1];
-	sizemall = big + small;
-	r = _callocX(big + 1), mless = _callocX(small);
+	sizemall = big + small, r = _callocX(big + 1), mless = _callocX(small);
 	adds1 = _callocX(sizemall), addsall = infinite_add("0", adds1, r);
 	if (mless == 0 || adds1 == 0 || r == 0)
 		return (0);
@@ -200,11 +193,9 @@ int main(int argc, char **argv)
 			adds1[k] = '0' + ten;
 		}
 		adds1 = zerox(adds1, zeros, sizemall + 1);
-		addsall = infinite_add(adds1, addsall, r);
-		zeros++;
+		addsall = infinite_add(adds1, addsall, r), zeros++;
 		free(adds1);
 	}
-	free(mless);
-	printf("%s\n", addsall);
+	free(mless), printf("%s\n", addsall);
 	return (0);
 }
