@@ -48,6 +48,10 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (new_dog == 0)
 		return (0);
 
+	if (_strdup(name) == 0)
+		return (0);
+	if (_strdup(owner) == 0)
+		return (0);
 	new_dog->name = _strdup(name);
 	new_dog->age = age;
 	new_dog->owner = _strdup(owner);
