@@ -1,4 +1,3 @@
-C - Structures, typedef
+C - Low level programming
 
-Repository for studying What are structures, when, why and how to use them, and
-how to use typedef.
+Repository for studying c language and all of its components.
