@@ -1,1 +1,1 @@
-#pragma message"Hello, Holberton\n"
+#warning "Hello, Holberton\n"
