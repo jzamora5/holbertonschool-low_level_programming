@@ -1,5 +1,4 @@
-# holbertonschool-low_level_programming
+C - Structures, typedef
 
-Learning C Language
-
-In this project C language is studied from its very beginning in a linux distribution. Things are begun with variable initializations, following more complex things such as conditions and cycles.
+Repository for studying What are structures, when, why and how to use them, and
+how to use typedef.
