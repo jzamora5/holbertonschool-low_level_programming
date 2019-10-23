@@ -13,7 +13,7 @@ int int_index(int *array, int size, int (*cmp)(int))
 {
 	int i, f = 0;
 
-	if (cmp == 0 || size <= 0)
+	if (cmp || size <= 0 || array)
 		return (-1);
 
 	for (i = 0; i < size && f == 0; i++)
