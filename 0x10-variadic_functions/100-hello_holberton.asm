@@ -7,7 +7,7 @@ main:
 	mov rdx, 17 		;third argument: length of string
 	mov rcx, msg		;second argument: pointer to message to write
 	mov rbx, 1		;first argument: file handle (stdout)
-	mov rax, 4		;system call numer (sys_write)
+	mov rax, 4		;system call number (sys_write)
 	int 0x80		;call kernel (interrupt)
 
 	mov rbx, 0		;move 0 to rbx (exit code)
