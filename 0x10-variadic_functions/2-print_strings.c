@@ -16,7 +16,10 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	char *tmp;
 
 	if (n == 0)
+	{
+		printf("\n");
 		return;
+	}
 	va_start(list, n);
 	for (i = 0; i < n - 1; i++)
 	{
