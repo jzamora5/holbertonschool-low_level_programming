@@ -1,5 +1,5 @@
 section .rodata
-    format: db 'Hello %s', 10, 0
+    format: db 'Hello, %s', 10, 0
     name:   db 'Holberton', 0
 
 section .text
