@@ -52,7 +52,7 @@ char *_strdup(const char *str)
  * @head: pointer to head of singly linked list
  * @str: string to add as new node in list
  *
- * Return: Number of elements in list
+ * Return: the address of the new element, or NULL if it failed
  */
 list_t *add_node(list_t **head, const char *str)
 {
