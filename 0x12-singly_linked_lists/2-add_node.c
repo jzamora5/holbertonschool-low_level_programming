@@ -62,12 +62,22 @@ list_t *add_node(list_t **head, const char *str)
 	if (new_node == 0)
 		return (0);
 
-
-	tmp = _strdup(str);
-	if (tmp == 0)
-		return (0);
-	new_node->str = tmp;
-	new_node->len = _strlen(tmp);
+	if (str == 0)
+	{
+		new_node->str = 0;
+		new_node->len = 0;
+	}
+	else
+	{
+		tmp = _strdup(str);
+		if (tmp == 0)
+		{
+			free(new_node);
+			return (0);
+		}
+		new_node->str = tmp;
+		new_node->len = _strlen(tmp);
+	}
 
 	new_node->next = *head;
 	*head = new_node;
