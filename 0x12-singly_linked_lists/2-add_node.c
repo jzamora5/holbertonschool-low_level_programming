@@ -4,11 +4,10 @@
 #include <stdlib.h>
 
 /**
- * _strlen - swaps two values
+ * _strlen - function to get length of a string
  * @s: string
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: Length of a array of characters
  */
 int _strlen(char *s)
 {
