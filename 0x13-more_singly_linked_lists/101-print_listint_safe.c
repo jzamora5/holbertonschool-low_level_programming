@@ -4,7 +4,7 @@
 
 /**
  * print_listint_safe - prints a singly linked list (can print lists with loop)
- * @head: pointer to head of singly linked list
+ * @head: head pointer of singly linked list
  *
  * Return: Number of elements in list
  */
