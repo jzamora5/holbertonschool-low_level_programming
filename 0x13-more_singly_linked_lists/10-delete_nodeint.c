@@ -20,7 +20,8 @@ size_t listint_len(const listint_t *h)
 }
 
 /**
- * delete_nodeint_at_index - deletes the node at index index of a listint_t linked list
+ * delete_nodeint_at_index - deletes the node at index index of
+ * a listint_t linked list
  * @head: pointer to head of singly linked list
  * @index: index of the list where we want to delete a node
  *
@@ -31,7 +32,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	unsigned int len = listint_len(*head), count = 0;
 	listint_t *tmp1, *tmp2, *tmp3;
 
-	if (head == 0)
+	if (*head == 0)
 		return (-1);
 
 	if (len == 1 && index == 0)
