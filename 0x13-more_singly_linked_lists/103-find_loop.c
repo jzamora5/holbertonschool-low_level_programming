@@ -14,14 +14,14 @@ listint_t *find_listint_loop(listint_t *head)
 	listint_t *tmp;
 
 	if (head == 0)
-		exit(98);
+		return (0);
 
 	while (head != 0)
 	{
 		tmp = head;
 		head = head->next;
 
-		if (tmp < head)
+		if (tmp <= head)
 			return (head);
 	}
 
