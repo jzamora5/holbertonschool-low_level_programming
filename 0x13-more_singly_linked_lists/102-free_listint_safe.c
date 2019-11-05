@@ -25,7 +25,7 @@ size_t free_listint_safe(listint_t **h)
 
 		free(tmp2);
 
-		if (tmp2 < tmp)
+		if (tmp2 <= tmp)
 			break;
 	}
 
