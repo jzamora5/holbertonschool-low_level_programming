@@ -25,8 +25,12 @@ listint_t *find_listint_loop(listint_t *head)
 		tmp2 = head;
 		tmp = tmp->next;
 
+
 		while (tmp2 != tmp && tmp != 0)
 		{
+
+			if (tmp->next == tmp)
+				return (tmp);
 			if (tmp->next == tmp2)
 				return (tmp2);
 
