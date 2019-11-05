@@ -23,7 +23,7 @@ listint_t *find_listint_loop(listint_t *head)
 		tmp2 = tmp;
 		tmp = tmp->next;
 
-		if (tmp2 <= tmp && tmp2 != 0)
+		if (tmp2 <= tmp && tmp != 0)
 			return (tmp);
 	}
 
