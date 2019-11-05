@@ -11,18 +11,20 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *tmp;
+	listint_t *tmp, *tmp2;
 
-	if (head == 0)
+	tmp = head;
+
+	if (tmp == 0)
 		return (0);
 
-	while (head != 0)
+	while (tmp != 0)
 	{
-		tmp = head;
-		head = head->next;
+		tmp2 = tmp;
+		tmp = tmp->next;
 
-		if (tmp <= head)
-			return (head);
+		if (tmp2 <= tmp)
+			return (tmp);
 	}
 
 	return (0);
