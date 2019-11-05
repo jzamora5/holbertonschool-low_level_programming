@@ -13,7 +13,7 @@ size_t free_listint_safe(listint_t **h)
 	listint_t *tmp = *h, *tmp2;
 	unsigned int count = 0;
 
-	if (tmp == 0)
+	if (tmp == 0 || h == 0)
 		return (0);
 
 	tmp = *h;
