@@ -19,7 +19,7 @@ listint_t *reverse_listint(listint_t **head)
 
 	a = *head;
 	b = a->next;
-	a->next = 0;
+
 	while (1)
 	{
 		if (b->next == 0)
