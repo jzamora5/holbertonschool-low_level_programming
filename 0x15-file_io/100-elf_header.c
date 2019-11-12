@@ -1,10 +1,7 @@
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
-
+#include <stdlib.h>
 
 /**
  * _class - print elf class
@@ -218,13 +215,12 @@ int main(int argc, char **argv)
 	char h[32];
 
 	if (argc != 2)
-		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n"), exit(98);
+		dprintf(STDERR_FILENO, "Wrong # of Arguments\n"), exit(98);
+	if (argv[1] == 0)
+		dprintf(STDERR_FILENO, "Null name\n"), exit(98);
 	fdelf = open(argv[1], O_RDONLY);
 	if (fdelf == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
+		dprintf(STDERR_FILENO, "Can't Open File\n"), exit(98);
 	relf = read(fdelf, h, 32);
 	if (relf == -1)
 		dprintf(STDERR_FILENO, "Error Reading File\n"), exit(98);
@@ -249,8 +245,9 @@ int main(int argc, char **argv)
 	_entry(h, x64);
 
 	closecheck = close(fdelf);
+
 	if (closecheck == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdelf), exit(98);
+		dprintf(STDERR_FILENO, "Error Closing File\n"), exit(98);
 
 	return (0);
 }
