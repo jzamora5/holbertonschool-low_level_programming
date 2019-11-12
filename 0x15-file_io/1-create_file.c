@@ -37,7 +37,7 @@ int create_file(const char *filename, char *text_content)
 	{
 		checkw = write(fd, text_content, l);
 
-		if (checkw == -1 || checkW != l)
+		if (checkw == -1 || checkw != l)
 			return (-1);
 	}
 
