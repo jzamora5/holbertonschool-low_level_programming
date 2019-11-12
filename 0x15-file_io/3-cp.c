@@ -54,10 +54,11 @@ int main(int argc, char **argv)
 			exit(99);
 		}
 	}
-
 	if (checkr == -1)
-		dprintf(2, "Error: Can't read from file %s\n", argv[1]), exit(98);
-
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 	checkc1 = close(fdfrom);
 	if (checkc1 == -1)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdfrom), exit(100);
