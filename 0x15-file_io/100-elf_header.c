@@ -117,16 +117,12 @@ void _os(char *h)
  */
 void _type(char *h, int x64)
 {
-	int xtype;
 
-	if (x64 == 0)
-		xtype = 16;
-	else
-		xtype = 17;
+	(void) x64;
 
 	printf("  %-35s", "Type:");
 
-	switch (h[xtype])
+	switch (h[16])
 	{
 	case 0:
 		printf("NONE\n");
