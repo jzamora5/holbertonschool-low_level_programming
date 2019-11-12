@@ -43,8 +43,8 @@ int main(int argc, char **argv)
 	if (fdto == -1)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
 
-	checkr = read(fdfrom, buff, 1024);
-	while (checkr > 0)
+
+	while ((checkr = read(fdfrom, buff, 1024)) > 0)
 	{
 		checkw = write(fdto, buff, checkr);
 		if (checkw != checkr)
@@ -52,10 +52,9 @@ int main(int argc, char **argv)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
-		checkr = read(fdfrom, buff, 1024);
 	}
 
-	if (checkr < 0)
+	if (checkr == -1)
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]), exit(98);
 
 	checkc1 = close(fdfrom);
