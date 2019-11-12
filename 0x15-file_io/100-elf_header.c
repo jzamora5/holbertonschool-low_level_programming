@@ -5,83 +5,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void _class(char *h, int x64);
-void _data(char *h);
-void _version(char *h);
-void _os(char *h);
-void _type(char *h, int x64);
-void _entry(char *h, int x64);
-
-/**
- * main - displays the information contained in the ELF header at
- * the start of an ELF file.
- *
- * Usage: elf_header elf_filename
- * displayed information: (not less, not more)
- * Magic
- * Class
- * Data
- * Version
- * OS/ABI
- * ABI Version
- * Type
- * Entry point address
- *
- * @argc: Counts the number of parameters that go into main
- * @argv: Pointer of array of pointers containing strings entering main
- *
- * Return: Always 0 on (Success)
- *
- * if the file is not an ELF file, or on error, exit with status code 98
- *  and display a comprehensive error message to stderr
- */
-int main(int argc, char **argv)
-{
-	int i, fdelf, relf, closecheck, x64 = 0;
-	char h[32];
-
-	if (argc != 2)
-		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n"), exit(98);
-
-	fdelf = open(argv[1], O_RDONLY);
-	if (fdelf == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
-
-	relf = read(fdelf, h, 32);
-	if (relf == -1)
-		dprintf(STDERR_FILENO, "Error Reading File\n"), exit(98);
-
-	if (h[0] != 0x7f || h[1] != 'E' || h[2] != 'L' || h[3] != 'F')
-		dprintf(STDERR_FILENO, "Error: Wrong file type\n"), exit(98);
-
-	printf("ELF Header:\n  Magic:   ");
-
-	for (i = 0; i < 16; i++)
-		printf("%02x ", (unsigned int)h[i]);
-	printf("\n");
-
-	if (h[4] == 2)
-		x64 = 1;
-
-	_class(h, x64);
-	_data(h);
-	_version(h);
-	_os(h);
-
-	printf("  %-35s0\n", "ABI Version:");
-
-	_type(h, x64);
-	_entry(h, x64);
-
-	closecheck = close(fdelf);
-	if (closecheck == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdelf), exit(98);
-
-	return (0);
-}
 
 /**
  * _class - print elf class
@@ -150,64 +73,42 @@ void _os(char *h)
 {
 	printf("  %-35s", "OS/ABI:");
 
-	switch (h[7])
-	{
-	case 0:
+	if (h[7] == 0)
 		printf("UNIX - System V\n");
-		break;
-	case 1:
+	else if (h[7] == 1)
 		printf("UNIX - HP-UX\n");
-		break;
-	case 2:
+	else if (h[7] == 2)
 		printf("UNIX - NetBSD\n");
-		break;
-	case 3:
+	else if (h[7] == 3)
 		printf("UNIX - Linux\n");
-		break;
-	case 4:
+	else if (h[7] == 4)
 		printf("UNIX - GNU Hurd\n");
-		break;
-	case 6:
+	else if (h[7] == 6)
 		printf("UNIX - Solaris\n");
-		break;
-	case 7:
+	else if (h[7] == 7)
 		printf("UNIX - AIX\n");
-		break;
-	case 8:
+	else if (h[7] == 8)
 		printf("UNIX - IRIX\n");
-		break;
-	case 9:
+	else if (h[7] == 9)
 		printf("UNIX - FreeBSD\n");
-		break;
-	case 10:
+	else if (h[7] == 10)
 		printf("UNIX - Tru64\n");
-		break;
-	case 11:
+	else if (h[7] == 11)
 		printf("UNIX - Novell Modesto\n");
-		break;
-	case 12:
+	else if (h[7] == 12)
 		printf("UNIX - OpenBSD\n");
-		break;
-	case 13:
+	else if (h[7] == 13)
 		printf("UNIX - Open VMS\n");
-		break;
-	case 14:
+	else if (h[7] == 14)
 		printf("UNIX - NonStop Kernel\n");
-		break;
-	case 15:
+	else if (h[7] == 15)
 		printf("UNIX - AROS\n");
-		break;
-	case 16:
+	else if (h[7] == 16)
 		printf("UNIX - Fenix OS\n");
-		break;
-	case 17:
+	else if (h[7] == 17)
 		printf("UNIX - CloudABI\n");
-		break;
-	default:
+	else
 		printf("<unknown: %02hx>\n", h[7]);
-		break;
-	}
-
 }
 /**
  * _type - print elf type
@@ -286,4 +187,70 @@ void _entry(char *h, int x64)
 				printf("%02x", (unsigned char) h[i]);
 	}
 	printf("\n");
+}
+
+/**
+ * main - displays the information contained in the ELF header at
+ * the start of an ELF file.
+ *
+ * Usage: elf_header elf_filename
+ * displayed information: (not less, not more)
+ * Magic
+ * Class
+ * Data
+ * Version
+ * OS/ABI
+ * ABI Version
+ * Type
+ * Entry point address
+ *
+ * @argc: Counts the number of parameters that go into main
+ * @argv: Pointer of array of pointers containing strings entering main
+ *
+ * Return: Always 0 on (Success)
+ *
+ * if the file is not an ELF file, or on error, exit with status code 98
+ *  and display a comprehensive error message to stderr
+ */
+int main(int argc, char **argv)
+{
+	int i, fdelf, relf, closecheck, x64 = 0;
+	char h[32];
+
+	if (argc != 2)
+		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n"), exit(98);
+	fdelf = open(argv[1], O_RDONLY);
+	if (fdelf == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	relf = read(fdelf, h, 32);
+	if (relf == -1)
+		dprintf(STDERR_FILENO, "Error Reading File\n"), exit(98);
+
+	if (h[0] != 0x7f || h[1] != 'E' || h[2] != 'L' || h[3] != 'F')
+		dprintf(STDERR_FILENO, "Error: Wrong file type\n"), exit(98);
+
+	printf("ELF Header:\n  Magic:   ");
+	for (i = 0; i < 16; i++)
+		printf("%02x ", (unsigned int)h[i]);
+	printf("\n");
+
+	if (h[4] == 2)
+		x64 = 1;
+
+	_class(h, x64);
+	_data(h);
+	_version(h);
+	_os(h);
+	printf("  %-35s0\n", "ABI Version:");
+	_type(h, x64);
+	_entry(h, x64);
+
+	closecheck = close(fdelf);
+	if (closecheck == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdelf), exit(98);
+
+	return (0);
 }
