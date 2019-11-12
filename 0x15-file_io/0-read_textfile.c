@@ -41,7 +41,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	c[letters] = '\0';
 
-	checkw = write(STDIN_FILENO, c, checkr);
+	checkw = write(STDOUT_FILENO, c, checkr);
 	if (checkw == -1)
 		return (free(c), 0);
 
