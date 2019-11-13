@@ -7,6 +7,7 @@
 #include <elf.h>
 
 
+
 /**
  * _checkelf - checks if file is elf type
  *
@@ -88,18 +89,13 @@ void _data(char *h)
 void _version(char *h)
 {
 	printf("  %-35s", "Version:");
-	if (h[6] <= EV_CURRENT)
+	if (h[6] == EV_CURRENT)
 	{
-		printf("%d", h[6]);
-
-		if (h[6] == EV_CURRENT)
-			printf(" (current)\n");
-		else
-			printf("\n");
+		printf("%d (current)\n", h[6]);
 	}
-	else
+	else if (h[6] != EV_CURRENT)
 	{
-		printf("0 (invalid)\n");
+		printf("%d\n", h[6]);
 	}
 }
 /**
