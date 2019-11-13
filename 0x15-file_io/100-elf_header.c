@@ -6,6 +6,39 @@
 #include <stdlib.h>
 #include <elf.h>
 
+
+/**
+ * _checkelf - checks if file is elf type
+ *
+ * @h: header
+ *
+ * Return: No Return
+ */
+void _checkelf(char *h)
+{
+	if (h[0] != 0x7f || h[1] != 'E' || h[2] != 'L' || h[3] != 'F')
+		dprintf(STDERR_FILENO, "Error: Wrong file type\n"), exit(98);
+}
+
+/**
+ * _magic - print elf magic
+ *
+ * @h: header
+ *
+ * Return: No Return
+ */
+void _magic(char *h)
+{
+	int i;
+
+	printf("ELF Header:\n  Magic:   ");
+
+	for (i = 0; i < 15; i++)
+		printf("%02x ", (unsigned int)h[i]);
+	printf("%02x", (unsigned int)h[i]);
+
+	printf("\n");
+}
 /**
  * _class - print elf class
  *
@@ -58,6 +91,7 @@ void _version(char *h)
 	if (h[6] <= EV_CURRENT)
 	{
 		printf("%d", h[6]);
+
 		if (h[6] == EV_CURRENT)
 			printf(" (current)\n");
 		else
@@ -65,9 +99,8 @@ void _version(char *h)
 	}
 	else
 	{
-		printf("49 <unknown %%lx>");
+		printf("0 (invalid)\n");
 	}
-
 }
 /**
  * _os - print elf os/ABI
@@ -168,25 +201,23 @@ void _type(char *h, int x64)
  */
 void _entry(char *h, int x64)
 {
-	int count, i;
-	(void) x64;
+	int count = 27, i;
 
 	printf("  %-35s0x", "Entry point address:");
 
-	if (h[4] == 2)
-		count = 0x1f;
-	else
-		count = 0x1b;
+	if (x64 == 1)
+		count = 31;
 
 	if (h[5] == 1)
 	{
 		/* Little Endian */
 		i = count;
-		while (h[i] == 0 && i > 0x18)
+		while (h[i] == 0 && i > 24)
 			i--;
-		printf("%x", h[i]);
+		printf("%02x", h[i]);
 		i--;
-		while (i >= 0x18)
+
+		while (i >= 24)
 		{
 			printf("%02x", (unsigned char) h[i]);
 			i--;
@@ -196,11 +227,12 @@ void _entry(char *h, int x64)
 	{
 		/* Big Endian */
 
-		i = 0x18;
+		i = 24;
 		while (h[i] == 0)
 			i++;
-		printf("%x", h[i]);
+		printf("%02x", h[i]);
 		i++;
+
 		while (i <= count)
 		{
 			printf("%02x", (unsigned char) h[i]);
@@ -235,7 +267,7 @@ void _entry(char *h, int x64)
  */
 int main(int argc, char **argv)
 {
-	int i, fdelf, relf, closecheck, x64 = 0;
+	int fdelf, relf, closecheck, x64 = 0;
 	char h[32];
 
 	if (argc != 2)
@@ -249,17 +281,12 @@ int main(int argc, char **argv)
 	if (relf == -1)
 		dprintf(STDERR_FILENO, "Error Reading File\n"), exit(98);
 
-	if (h[0] != 0x7f || h[1] != 'E' || h[2] != 'L' || h[3] != 'F')
-		dprintf(STDERR_FILENO, "Error: Wrong file type\n"), exit(98);
-
-	printf("ELF Header:\n  Magic:   ");
-	for (i = 0; i < 16; i++)
-		printf("%02x ", (unsigned int)h[i]);
-	printf("\n");
+	_checkelf(h);
 
 	if (h[4] == 2)
 		x64 = 1;
 
+	_magic(h);
 	_class(h, x64);
 	_data(h);
 	_version(h);
