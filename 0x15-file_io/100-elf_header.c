@@ -6,8 +6,6 @@
 #include <stdlib.h>
 #include <elf.h>
 
-
-
 /**
  * _checkelf - checks if file is elf type
  *
@@ -147,6 +145,18 @@ void _os(char *h)
 		printf("<unknown: %02hx>\n", h[7]);
 }
 /**
+ * _abiv - checks abi version
+ *
+ * @h: header
+ *
+ * Return: No Return
+ */
+void _abiv(char *h)
+{
+	printf("  %-35s", "ABI Version:");
+	printf("%d\n", h[8]);
+}
+/**
  * _type - print elf type
  *
  * @h: header
@@ -159,6 +169,7 @@ void _type(char *h, int x64)
 	int xtype = 17;
 
 	(void) x64;
+
 	if (h[5] == 1)
 		xtype = 16;
 
@@ -182,9 +193,8 @@ void _type(char *h, int x64)
 		printf("CORE (Core file)\n");
 		break;
 	default:
-		printf("<unknown>: %02x%02x\n", h[16], h[17]);
+		printf("<unknown>: %02x\n", h[xtype]);
 	}
-
 }
 /**
  * _entry - print elf entry point access by directly accesing
@@ -287,7 +297,7 @@ int main(int argc, char **argv)
 	_data(h);
 	_version(h);
 	_os(h);
-	printf("  %-35s0\n", "ABI Version:");
+	_abiv(h);
 	_type(h, x64);
 	_entry(h, x64);
 
