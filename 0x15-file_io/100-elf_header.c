@@ -1,3 +1,5 @@
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -182,9 +184,13 @@ void _entry(char *h, int x64)
 		i = count;
 		while (h[i] == 0 && i > 0x18)
 			i--;
-		printf("%x", h[i--]);
+		printf("%x", h[i]);
+		i--;
 		while (i >= 0x18)
-			printf("%02x", (unsigned char) h[i--]);
+		{
+			printf("%02x", (unsigned char) h[i]);
+			i--;
+		}
 	}
 	else
 	{
@@ -193,9 +199,13 @@ void _entry(char *h, int x64)
 		i = 0x18;
 		while (h[i] == 0)
 			i++;
-		printf("%x", h[i++]);
+		printf("%x", h[i]);
+		i++;
 		while (i <= count)
-			printf("%02x", (unsigned char) h[i++]);
+		{
+			printf("%02x", (unsigned char) h[i]);
+			i++;
+		}
 	}
 	printf("\n");
 }
