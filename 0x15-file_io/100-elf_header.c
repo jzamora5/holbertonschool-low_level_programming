@@ -156,28 +156,35 @@ void _type(char *h, int x64)
 void _entry(char *h, int x64)
 {
 	int count, i;
+	(void) x64;
 
 	printf("  %-35s0x", "Entry point address:");
 
-	if (x64 == 0)
-		count = 24 + 4;
-	else if (x64 == 1)
-		count = 24 + 8;
+	if (h[4] == 2)
+		count = 0x1f;
+	else
+		count = 0x1b;
 
 	if (h[5] == 1)
 	{
 		/* Little Endian */
-		for (i = count - 1; i >= 24; i--)
-			if (h[i] != 0)
-				printf("%02x", (unsigned char) h[i]);
+		i = count;
+		while (h[i] == 0 && i > 0x18)
+			i--;
+		printf("%x", h[i--]);
+		while (i >= 0x18)
+			printf("%02x", (unsigned char) h[i--]);
 	}
 	else
 	{
 		/* Big Endian */
 
-		for (i = 24; i < count; i++)
-			if (h[i] != 0)
-				printf("%02x", (unsigned char) h[i]);
+		i = 0x18;
+		while (h[i] == 0)
+			i++;
+		printf("%x", h[i++]);
+		while (i <= count)
+			printf("%02x", (unsigned char) h[i++]);
 	}
 	printf("\n");
 }
