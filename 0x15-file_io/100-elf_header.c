@@ -214,7 +214,7 @@ void _entry(char *h, int x64)
 		i = count;
 		while (h[i] == 0 && i > 24)
 			i--;
-		printf("%02x", h[i]);
+		printf("%x", h[i]);
 		i--;
 
 		while (i >= 24)
@@ -230,7 +230,7 @@ void _entry(char *h, int x64)
 		i = 24;
 		while (h[i] == 0)
 			i++;
-		printf("%02x", h[i]);
+		printf("%x", h[i]);
 		i++;
 
 		while (i <= count)
