@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <elf.h>
 
 /**
  * _class - print elf class
@@ -52,12 +53,19 @@ void _data(char *h)
 void _version(char *h)
 {
 	printf("  %-35s", "Version:");
-	if (h[6] == 1)
-		printf("1 (current)\n");
-	else if (h[5] == 0)
-		printf("0 (invalid)\n");
+	if (h[6] <= EV_CURRENT)
+	{
+		printf("%d", h[6]);
+		if (h[6] == EV_CURRENT)
+			printf(" (current)\n");
+		else
+			printf("\n");
+	}
 	else
-		printf("<unknown: %02hx>\n", h[6]);
+	{
+		printf("49 <unknown %%lx>");
+	}
+
 }
 /**
  * _os - print elf os/ABI
