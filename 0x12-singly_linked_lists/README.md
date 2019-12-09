@@ -1,9 +1,9 @@
 # C - Singly linked lists
 
 
-**-When and why using linked lists vs arrays  
+**-When and why using linked lists vs arrays**  
 
--How to build and use linked lists**  
+**-How to build and use linked lists**  
 
 | Task | Description |
 |--|--|
