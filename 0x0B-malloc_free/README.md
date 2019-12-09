@@ -1,9 +1,9 @@
 # C - malloc, free
 
-**Repository for studying   
-What is the difference between automatic and dynamic allocation 
+**Repository for studying:  
+What is the difference between automatic and dynamic allocation  
 What is malloc and free and how to use them  
-Why and when use malloc and how to use valgrind to check for memory leak.**
+Why and when use malloc and how to use valgrind to check for memory leak.**  
 
 | Task | Description |
 |--|--|
