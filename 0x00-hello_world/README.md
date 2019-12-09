@@ -1,6 +1,6 @@
-C Basics
+# C Basics
 
-Language Basics: gcc, printf, puts, and putchar.  
+**Language Basics: gcc, printf, puts, and putchar.**  
 
 | Task | Description |
 |--|--|
