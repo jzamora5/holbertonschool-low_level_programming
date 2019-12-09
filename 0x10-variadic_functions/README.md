@@ -3,8 +3,8 @@
 **Repository for studying:  
 
 -What are variadic functions    
--How to use va start, va arg and va end macros
--Why and how to use the const type qualifier**
+-How to use va start, va arg and va end macros  
+-Why and how to use the const type qualifier**  
 
 | Task | Description |
 |--|--|
