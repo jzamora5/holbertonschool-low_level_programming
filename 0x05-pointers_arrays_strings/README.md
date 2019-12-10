@@ -43,7 +43,7 @@ What you should learn from this project:
 * Write a function that prints half of a string, followed by a new line.
 
 
-### [8. Arrays are not pointers](./ 8-print_array.c)
+### [8. Arrays are not pointers](./8-print_array.c)
 * Write a function that prints n elements of an array of integers, followed by a new line.
 
 
