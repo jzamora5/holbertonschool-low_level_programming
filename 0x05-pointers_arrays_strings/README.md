@@ -49,7 +49,7 @@ What you should learn from this project:
 
 ### [9. strcpy](./9-strcpy.c)
 * 
-Prototype: char *_strcpy(char *dest, char *src); 
+Prototype: char \*_strcpy(char *dest, char *src); 
 
 
 
