@@ -43,9 +43,7 @@
 
 
 ### [10. A dream doesn't become reality through magic; it takes sweat, determination and hard work](./101-magic.c)
-* 
-
-Add one line to this code, so that the program prints a[2] = 98, followed by a new line.
+* Add one line to this code, so that the program prints a[2] = 98, followed by a new line.
 
 
 ### [11. It is the addition of strangeness to beauty that constitutes the romantic character in art](./102-infinite_add.c)
