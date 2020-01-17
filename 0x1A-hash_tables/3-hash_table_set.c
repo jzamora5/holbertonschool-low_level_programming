@@ -23,13 +23,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (!valuedup)
 		return (0);
 
-	keydup = strdup(key);
-	if (!keydup)
-		return (0);
-
 	while (hnode != NULL)
 	{
-		if (!strcmp(hnode->key, keydup))
+		if (!strcmp(hnode->key, key))
 		{
 			free(hnode->value);
 			hnode->value = valuedup;
@@ -43,6 +39,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	collnode = malloc(sizeof(hash_node_t));
 	if (collnode == NULL)
 		return (0);
+
+	keydup = strdup(key);
+	if (!keydup)
+		return (0);
+
 	collnode->key = keydup;
 	collnode->value = valuedup;
 	collnode->next = hnode;
