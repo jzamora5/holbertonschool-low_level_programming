@@ -106,8 +106,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	keydup = strdup(key);
 	if (!keydup)
 		return (free(valuedup), free(collnode), 0);
-	if (shnode)
-		shnode->snext = NULL, shnode->sprev = NULL;
+
 	collnode->key = keydup;
 	collnode->value = valuedup;
 	collnode->next = shnode;
