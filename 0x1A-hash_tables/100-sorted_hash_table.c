@@ -43,7 +43,6 @@ void add_sorted_ht_key(shash_table_t *ht, shash_node_t *shnode)
 
 	if (!ht->shead || strcmp(shnode->key, ht->shead->key) <= 0)
 	{
-		shnode->sprev = NULL;
 		shnode->snext = ht->shead;
 		if (ht->shead)
 			ht->shead->sprev = shnode;
@@ -152,12 +151,13 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
  */
 void shash_table_print(const shash_table_t *ht)
 {
-	shash_node_t *hkey = ht->shead;
+	shash_node_t *hkey;
 	int comma = 0;
 
 	if (!ht || !(ht->array) || !(ht->shead))
 		return;
 
+	hkey = ht->shead;
 	printf("{");
 	while (hkey)
 	{
@@ -179,12 +179,13 @@ void shash_table_print(const shash_table_t *ht)
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
-	shash_node_t *hkey = ht->stail;
+	shash_node_t *hkey;
 	int comma = 0;
 
 	if (!ht || !(ht->array) || !(ht->stail))
 		return;
 
+	hkey = ht->stail;
 	printf("{");
 	while (hkey)
 	{
@@ -208,7 +209,7 @@ void shash_table_delete(shash_table_t *ht)
 	shash_node_t *shnode, *tmp;
 	unsigned long int i;
 
-	if (!ht)
+	if (!ht || !(ht->array))
 		return;
 
 	for (i = 0; i < ht->size; i++)
