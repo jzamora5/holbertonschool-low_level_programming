@@ -47,7 +47,7 @@ void add_sorted_ht_key(shash_table_t *ht, shash_node_t *shnode)
 		shnode->snext = ht->shead;
 		if (ht->shead)
 			ht->shead->sprev = shnode;
-		else
+		if (!(ht->stail))
 			ht->stail = shnode;
 		ht->shead = shnode;
 		return;
