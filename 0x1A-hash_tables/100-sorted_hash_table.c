@@ -152,7 +152,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
  */
 void shash_table_print(const shash_table_t *ht)
 {
-	shash_node_t *hkey = ht->shead, *tmp;
+	shash_node_t *hkey = ht->shead;
 	int comma = 0;
 
 	if (!ht || !(ht->array) || !(ht->shead))
@@ -161,15 +161,10 @@ void shash_table_print(const shash_table_t *ht)
 	printf("{");
 	while (hkey)
 	{
-		tmp = hkey;
-		while (tmp)
-		{
-			if (comma)
-				printf(", ");
-			printf("'%s': '%s'", tmp->key, tmp->value);
-			tmp = tmp->next;
-			comma = 1;
-		}
+		if (comma)
+			printf(", ");
+		printf("'%s': '%s'", hkey->key, hkey->value);
+		comma = 1;
 		hkey = hkey->snext;
 	}
 	printf("}\n");
@@ -184,7 +179,7 @@ void shash_table_print(const shash_table_t *ht)
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
-	shash_node_t *hkey = ht->stail, *tmp;
+	shash_node_t *hkey = ht->stail;
 	int comma = 0;
 
 	if (!ht || !(ht->array) || !(ht->stail))
@@ -193,15 +188,10 @@ void shash_table_print_rev(const shash_table_t *ht)
 	printf("{");
 	while (hkey)
 	{
-		tmp = hkey;
-		while (tmp)
-		{
-			if (comma)
-				printf(", ");
-			printf("'%s': '%s'", tmp->key, tmp->value);
-			tmp = tmp->next;
-			comma = 1;
-		}
+		if (comma)
+			printf(", ");
+		printf("'%s': '%s'", hkey->key, hkey->value);
+		comma = 1;
 		hkey = hkey->sprev;
 	}
 	printf("}\n");
