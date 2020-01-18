@@ -16,7 +16,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 		return (NULL);
 
 	shash_table->size = size;
-	shash_table->array = calloc(size, sizeof(shash_node_t));
+	shash_table->array = calloc(size, sizeof(shash_node_t *));
 	if (!(shash_table->array))
 	{
 		free(shash_table);
@@ -80,7 +80,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	unsigned long int index;
 	char *valuedup = NULL, *keydup = NULL;
 
-	if (!ht || !key || !key[0])
+	if (!ht || !(ht->array) || !key || !key[0])
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
