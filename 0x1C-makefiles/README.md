@@ -17,27 +17,27 @@ What you should learn from this project:
 
 
 ### [1. make -f 1-Makefile](./1-Makefile)
-* Requirements:
+* Makefile with Variables
 
 
 ### [2. make -f 2-Makefile](./2-Makefile)
-* Create your first useful Makefile.
+* Makefile with Variables and Implicit Rule
 
 
 ### [3. make -f 3-Makefile](./3-Makefile)
-* Requirements:
+* MakeFile with Variables and More Rules
 
 
 ### [4. A complete Makefile](./4-Makefile)
-* Requirements:
+* A complete MakeFile
 
 
 ### [5. Island Perimeter](./5-island_perimeter.py)
-* Technical interview preparation: 
+* Island Perimeter (PYTHON)
 
 
 ### [6. make -f 100-Makefile](./100-Makefile)
-* Requirements:
+* MakeFile Phony
 
 ---
 
