@@ -37,7 +37,7 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	node_pos = list, node_min = list;
 	step = sqrt(size);
 
-	while (node_pos->next && (node_pos->n) < value)
+	while (node_pos && node_pos->next && (node_pos->n) < value)
 	{
 		node_min = node_pos;
 
@@ -57,6 +57,9 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		if (node_min && (node_min->n) == value)
 			return (node_min);
 	}
+
+	if (node_min)
+		printf("Value checked array[%lu] = [%d]\n", i, node_min->n);
 
 	return (NULL);
 }
