@@ -42,17 +42,17 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		node_min = node_pos;
 
 		node_pos = list_move(node_pos, step);
-		printf("Value checked array[%zu] = [%d]\n",
+		printf("Value checked array[%lu] = [%d]\n",
 		       node_pos->index, node_pos->n);
 	}
 
-	printf("Value found between indexes [%zu] and [%zu]\n",
+	printf("Value found between indexes [%lu] and [%lu]\n",
 	       node_min->index, node_pos->index);
 
 	for (i = node_min->index; i <= (node_pos->index) && i < size;
 	     i++, node_min = node_min->next)
 	{
-		printf("Value checked array[%zu] = [%d]\n", i, node_min->n);
+		printf("Value checked array[%lu] = [%d]\n", i, node_min->n);
 		if (node_min && (node_min->n) == value)
 			return (node_min);
 	}

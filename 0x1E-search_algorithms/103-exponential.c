@@ -74,7 +74,7 @@ int exponential_search(int *array, size_t size, int value)
 
 	while (range < size && array[range] < value)
 	{
-		printf("Value checked array[%zu] = [%d]\n", range, array[range]);
+		printf("Value checked array[%lu] = [%d]\n", range, array[range]);
 		range *= 2;
 	}
 
@@ -83,6 +83,6 @@ int exponential_search(int *array, size_t size, int value)
 	else
 		high = range;
 
-	printf("Value found between indexes [%zu] and [%d]\n", range / 2, high);
+	printf("Value found between indexes [%lu] and [%d]\n", range / 2, high);
 	return (binary_searchEx(array, range / 2, high, value));
 }

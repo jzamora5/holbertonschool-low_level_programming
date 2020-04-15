@@ -25,7 +25,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		{
 			node_pos = node_pos->express;
 
-			printf("Value checked array[%zu] = [%d]\n",
+			printf("Value checked array[%lu] = [%d]\n",
 			       node_pos->index, node_pos->n);
 		}
 		else
@@ -33,13 +33,13 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 				node_pos = node_pos->next;
 	}
 
-	printf("Value found between indexes [%zu] and [%zu]\n",
+	printf("Value found between indexes [%lu] and [%lu]\n",
 	       node_min->index, node_pos->index);
 
 	for (i = node_min->index; i <= (node_pos->index);
 	     i++, node_min = node_min->next)
 	{
-		printf("Value checked array[%zu] = [%d]\n", i, node_min->n);
+		printf("Value checked array[%lu] = [%d]\n", i, node_min->n);
 		if (node_min && (node_min->n) == value)
 			return (node_min);
 	}
