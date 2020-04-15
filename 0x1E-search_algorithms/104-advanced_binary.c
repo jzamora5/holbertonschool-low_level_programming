@@ -34,24 +34,25 @@ int auxBinary(int *array, int min, int max, int value)
 	if (min > max)
 		return (-1);
 
+	printf("Searching in array: ");
+	print_arrayAd(array, min, max);
+
+
 	if (min == max && array[max] == value)
 		return (max);
 
 	if (min == max && array[max] != value)
 		return (-1);
 
-	printf("Searching in array: ");
-	print_arrayAd(array, min, max);
-
 	mid = min + (max - min) / 2;
 
-	if ((mid == 0 || value != array[mid - 1]) && array[mid] == value)
+	if ((mid == min || value != array[mid - 1]) && array[mid] == value)
 		return (mid);
 
-	if (array[mid] < value)
-		return (auxBinary(array, mid + 1, max, value));
+	if (array[mid] >= value)
+		return (auxBinary(array, min, mid, value));
+	return (auxBinary(array, mid + 1, max, value));
 
-	return (auxBinary(array, min, mid, value));
 }
 /**
  * advanced_binary - searches for a value in a sorted array of integers
