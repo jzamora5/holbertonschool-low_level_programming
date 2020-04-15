@@ -28,36 +28,29 @@ listint_t *list_move(listint_t *list, int x)
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t step, pos, i, min;
+	size_t step, i;
 	listint_t *node_pos, *node_min;
 
 	if (!list || size == 0)
 		return (NULL);
 
-	pos = 0, min = 0;
 	node_pos = list, node_min = list;
 	step = sqrt(size);
 
-	while (node_pos && (node_pos->n) < value)
+	while (node_pos->next && (node_pos->n) < value)
 	{
-		min = pos;
 		node_min = node_pos;
-		pos += step;
-
-		if (pos > (size - 1))
-			pos = size - 1;
 
 		node_pos = list_move(node_pos, step);
-		printf("Value checked array[%zu] = [%d]\n", pos, node_pos->n);
-
-
-		if (pos == (size - 1))
-			break;
+		printf("Value checked array[%zu] = [%d]\n",
+		       node_pos->index, node_pos->n);
 	}
 
-	printf("Value found between indexes [%zu] and [%zu]\n", min, pos);
+	printf("Value found between indexes [%zu] and [%zu]\n",
+	       node_min->index, node_pos->index);
 
-	for (i = min; i <= pos && i < size; i++, node_min = node_min->next)
+	for (i = node_min->index; i <= (node_pos->index) && i < size;
+	     i++, node_min = node_min->next)
 	{
 		printf("Value checked array[%zu] = [%d]\n", i, node_min->n);
 		if (node_min && (node_min->n) == value)
